@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h2>Create Category</h2>
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="@Model.Name" class="form-label">Category name</label>
+            <input asp-for="@Model.Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>
+
+@section Script{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+            integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+

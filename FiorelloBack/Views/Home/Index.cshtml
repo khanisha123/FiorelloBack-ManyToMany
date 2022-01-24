@@ -1,0 +1,369 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section id="introduce" class="col-lg-12 col-sm-12 col-12">
+    <div class="images">
+
+        <i class="fas fa-chevron-right clickright"></i>
+        <i class="fas fa-chevron-left clickleft"></i>
+        <img id="interval" src="~/assets/images/h3-slider-background.jpeg" alt="">
+    </div>
+    <div class="flowersInfo">
+        <div class="title">
+            <div class="st">
+                <span>Send</span><span>flowers</span><span>like</span>
+            </div>
+            <div class="nd">
+                <span>you mean it.</span>
+            </div>
+        </div>
+        <div class="desc">
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia rerum beatae totam sunt
+                excepturi voluptatum maiores non ex et officia?
+            </p>
+        </div>
+        <div class="sign">
+            <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h2-sign-img.png" alt="">
+        </div>
+    </div>
+</section>
+<section id="products">
+    <div class="container">
+        <div class="row">
+            <div class="filters-filterbtn d-flex justify-content-between">
+                <div class="mdfilters">
+                    <span id="mdcategory" style="cursor: pointer;
+                            font-size: 12px;
+                            letter-spacing: 2px;
+                            transition: 0.2s;">CATEGORY</span><i style="font-size: 12px;"
+                                                                 class="fas fa-chevron-down"></i>
+                    <div class="mdcategories" style="max-width:min-content;">
+                        <span id="firstfilter" data-id="all">ALL</span>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <span data-id="@category.Name.ToLower()">@category.Name.ToUpper()</span>
+                        }
+
+
+
+                    </div>
+                </div>
+                <div class="filters col-lg-10  ">
+                    <span id="firstfilter" data-id="all">ALL</span>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <span data-id="@category.Name.ToLower()" style="margin-left: 20px;">@category.Name.ToUpper()</span>
+                    }
+
+
+
+                </div>
+                <div class="filterbtn col-lg-2 d-flex justify-content-end">
+                    <span id="mdfilterbtn">FILTER</span><span><i class="fas fa-chevron-down"></i></span>
+                    <div class="mdfilterLists" style="max-width:max-content;max-height: max-content;">
+                        <div class="sortby">
+                            <h4>Sort By</h4>
+                            <ul>
+                                <li><a href="">Default</a></li>
+                                <li><a href="">Popularity</a></li>
+                                <li><a href="">Newness</a></li>
+                                <li><a href="">Price : low to higher</a></li>
+                                <li><a href="">Price : high to lower</a></li>
+                            </ul>
+                        </div>
+                        <div class="pricerange">
+                            <h4>Price range</h4>
+                            <ul>
+                                <li><a href="">All</a></li>
+                                <li><a href="">$0 - $10</a></li>
+                                <li><a href="">$10 - $20</a></li>
+                                <li><a href="">$20 - $30</a></li>
+                                <li><a href="">$30 - $40</a></li>
+                                <li><a href="">$40+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filterLists">
+                        <div class="sortby">
+                            <h4>Sort By</h4>
+                            <ul>
+                                <li><a href="">Default</a></li>
+                                <li><a href="">Popularity</a></li>
+                                <li><a href="">Newness</a></li>
+                                <li><a href="">Price : low to higher</a></li>
+                                <li><a href="">Price : high to lower</a></li>
+                            </ul>
+                        </div>
+                        <div class="pricerange">
+                            <h4>Price range</h4>
+                            <ul>
+                                <li><a href="">All</a></li>
+                                <li><a href="">$0 - $10</a></li>
+                                <li><a href="">$10 - $20</a></li>
+                                <li><a href="">$20 - $30</a></li>
+                                <li><a href="">$30 - $40</a></li>
+                                <li><a href="">$40+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         @await Html.PartialAsync("_FLowerPartialView",Model.Flowers)
+
+
+        </div>
+    </div>
+</section>
+
+<section id="valentine">
+    <div class="container">
+        <div class="row">
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="valentineVideo col-lg-6">
+                <div class="videoImage ">
+                    <img style="width: 100%;"
+                         src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-video-img.jpg"
+                         alt=""><i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="valentineTexts col-lg-6">
+                <div class="title">
+                    <h1>Surprise Your <span style="color: red;">Valentine!</span></h1>
+                    <h1>Let us arrange a smile.</h1>
+                </div>
+                <div class="desc">
+                    <p>
+                        Where flowers are our inspiration to create lasting memories. Whatever the occasion...
+
+                    </p>
+                </div>
+                <div class="icondescs">
+                    <div class="first">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h1-custom-icon.png"
+                             alt=""><span>
+                            Hand picked just for you.
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h1-custom-icon.png"
+                             alt=""><span>Unique flower arrangements</span>
+                    </div>
+                    <div class="third">
+
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h1-custom-icon.png"
+                             alt=""><span>Best way to say you care.</span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="flowerexperts">
+    <div class="container">
+        <div class="info col-lg-12">
+            <div class="title">
+                <h1>Flower Experts</h1>
+            </div>
+            <div class="desc">
+                <p>
+                    Flower Experts
+                    A perfect blend of creativity, energy, communication, happiness and love. Let us arrange a
+                    smile for you.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="experts">
+                <div class="expert col-md-6 col-12 col-lg-3">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-team-img-1.png"
+                             alt="">
+                    </div>
+                    <div class="name">
+                        <p>CRYSTAL BROOKS</p>
+                    </div>
+                    <div class="job">
+                        <p>Florist</p>
+                    </div>
+                </div>
+                <div class="expert col-md-6 col-12 col-lg-3">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/05/h3-team-img-2.png"
+                             alt="">
+                    </div>
+                    <div class="name">
+                        <p>SHIRLEY HARRIS</p>
+                    </div>
+                    <div class="job">
+                        <p>Manager</p>
+                    </div>
+                </div>
+                <div class="expert col-md-6 col-12 col-lg-3">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-team-img-3.png"
+                             alt="">
+                    </div>
+                    <div class="name">
+                        <p>
+                            BEVERLY CLARK
+                        </p>
+                    </div>
+                    <div class="job">
+                        <p>Florist</p>
+                    </div>
+                </div>
+                <div class="expert col-md-6 col-12 col-lg-3">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-team-img-4.png"
+                             alt="">
+                    </div>
+                    <div class="name">
+                        <p>AMANDA WATKINS</p>
+                    </div>
+                    <div class="job">
+                        <p>Florist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="subscribe">
+
+    <div class="parallax-window" data-parallax="scroll"
+         data-image-src="  https://fiorello.qodeinteractive.com/wp-content/uploads/2018/05/h3-background-img.jpg">
+
+        <div class="container">
+            <div class="title col-lg-12 col-12 col-md-12">
+                <h1>Join The Colorful Bunch!</h1>
+            </div>
+            <div class="subs col-lg-12 col-12 col-md-12">
+                <input type="email">
+                <button>SUBSCRIBE</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</section>
+
+<section id="blogs">
+    <div class="container">
+        <div class="info col-lg-12">
+            <div class="title">
+                <h1>Form our blog</h1>
+            </div>
+            <div class="desc">
+                <p>
+                    Flower Experts
+                    A perfect blend of creativity, energy, communication, happiness and love. Let us arrange a
+                    smile for you.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="blog col-lg-4">
+                <div class="image">
+                    <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/blog-feature-img-1.jpg"
+                         alt="">
+                    <span class="badge bg-light text-dark">03.08.2018</span>
+                </div>
+                <div class="title">
+                    <h4>Flower Power</h4>
+                </div>
+                <div class="desc">
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per</p>
+                </div>
+            </div>
+            <div class="blog col-lg-4">
+                <div class="image">
+                    <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/05/blog-feature-img-3.jpg"
+                         alt="">
+                    <span class="badge bg-light text-dark">03.08.2018</span>
+                </div>
+                <div class="title">
+                    <h4>Local florists</h4>
+                </div>
+                <div class="desc">
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per</p>
+                </div>
+            </div>
+            <div class="blog col-lg-4">
+                <div class="image">
+                    <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/05/blog-feature-img-4.jpg"
+                         alt="">
+                    <span class="badge bg-light text-dark">03.08.2018</span>
+                </div>
+                <div class="title">
+                    <h4>Flower beauty</h4>
+                </div>
+                <div class="desc">
+                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section id="slideimages">
+    <div class="container">
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <div class="expert col-md-6 col-12 col-lg-7">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-team-img-4.png"
+                             alt="">
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos magnam deleniti neque?
+                        </h3>
+                    </div>
+                    <div class="name">
+                        <p>AMANDA WATKINS</p>
+                    </div>
+                    <div class="job">
+                        <p>Florist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="expert col-md-6 col-12 col-lg-7">
+                    <div class="photo">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h3-team-img-3.png"
+                             alt="">
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima dolorum obcaecati
+                            ratione.
+                        </h3>
+                    </div>
+                    <div class="name">
+                        <p>
+                            BEVERLY CLARK
+                        </p>
+                    </div>
+                    <div class="job">
+                        <p>Florist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

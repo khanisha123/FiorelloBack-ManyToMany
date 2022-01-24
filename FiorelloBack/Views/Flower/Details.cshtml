@@ -1,0 +1,209 @@
+﻿@model Flower
+@{
+    ViewData["Title"] = "Details";
+    List<Flower> related = ViewBag.RelatedFlower;
+}
+<section id="secondpageintroduce">
+    <div class="container">
+        <div class="col-lg-12 info">
+            <div class="title">
+                <h1>
+                    Product List
+                </h1>
+            </div>
+            <div class="desc">
+                <p>Where flowers are our inspiration</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="orangeamarylls">
+    <div class="container">
+        <div class="row">
+            <div class="images col-lg-6 col-md-12 col-12">
+                <div class="littleImages">
+                    @foreach (var img in Model.FlowerImages.Where(i=>i.IsMain==false))
+                    {
+                        <div class="littleimage">
+                            <img src="@img.Image"
+                                 alt="">
+                        </div>
+                    }
+
+
+
+
+
+                </div>
+
+                <div class="bigImage">
+                        <img src="@Model.FlowerImages.FirstOrDefault(i=>i.IsMain==true).Image"
+                             alt="">
+                </div>
+
+            </div>
+            <div class="infos col-lg-6 col-md-12 col-12">
+                <div class="info">
+                    <div class="title">
+                        <h1>@Model.Name</h1>
+                    </div>
+                    <div class="price">
+                        @if (Model.CampaignId == null)
+                        {
+                            <p>@Model.Price</p>
+                        }
+                        else
+                        {
+                            <p>$@(Model.Price*(100-Model.Campaign.Dicount)/100)</p>
+                        }
+                    </div>
+                    <div class="desc">
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                    <div class="button">
+                        <input type="text" placeholder="Quantity">
+                        <div class="counter">
+                            <i class="fas fa-chevron-left minus"></i><span class="counting">0</span><i class="fas fa-chevron-right plus"></i>
+                        </div>
+                        <button type="button">ADD TO CART <span></span></button>
+                    </div>
+                    <div class="details">
+                        <span>SKU: <a href="">@Model.SKUCode</a></span>
+                        <span>Categories: <a href="">
+                             @foreach (var fCategory in Model.FlowerCategories)
+                             {
+                                 <span>@fCategory.Category.Name</span>
+                             }
+                             </a></span>
+                        <span>Tags: <a href=""> Lilies, Orchids</a></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tabs">
+    <div class="container">
+
+
+        <div class="row titles">
+            <div data-id="powerofflower" class="col-lg-2 col-md-2 col-5 title">
+                <button style="border-top: none !important;" type="button"><span>DESCRIPTION</span></button>
+            </div>
+            <div data-id="additional" class="col-lg-3 col-md-3 col-8 title">
+                <button style="border-top: none !important;border-left: none !important;border-right: none !important;" type="button"><span>ADDITIONAL INFORMATION</span></button>
+            </div>
+            <div data-id="reviews" class="col-lg-2 col-md-4 col-5 title">
+                <button style="border-top: none !important;" type="button"><span>REVIEWS (2)</span></button>
+            </div>
+        </div>
+
+
+        <div class="row paragraphs">
+            <div class="col-lg-12 powerofflower">
+                <div class="title">
+                    <h1>The power of flowers</h1>
+                </div>
+                <div class="desc">
+                    <p>
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla
+                        ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+                        augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas
+                        tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem
+                        neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                        Maecenas nec odio et ante
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-12 additional">
+                <span style="font-weight: bolder;">Weight:</span><span style="margin-left: 10px;">1kg</span><br>
+                <span style="font-weight: bolder;">Dimensions:</span><span style="margin-left: 10px;">
+                    30 x 30 x
+                    50 cm
+                </span>
+            </div>
+            <div class="col-lg-12 reviews">
+                <div class="title">
+                    <h3>Reviews</h3>
+                </div>
+                <div class="review">
+                    <div class="image">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/user-img-1-100x100.png"
+                             alt="">
+                    </div>
+                    <div class="info">
+                        <span>JOSHUA GARCIA</span> <span> 27.04.2018</span>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                            dolor. Aenean massa. Cum sociis Theme natoque penatibus et magnis dis parturient
+                            montes, nascetur ridiculus mus.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="review">
+                    <div class="image">
+                        <img src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/user-img-2-100x100.png"
+                             alt="">
+                    </div>
+                    <div class="info">
+                        <span>JOAN STANLEY </span><span>27.04.2018</span>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                            dolor. Aenean massa. Cum sociis Theme natoque penatibus et magnis dis parturient
+                            montes, nascetur ridiculus mus.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="forum">
+                    <div class="title">
+                        <h2>Add a review</h2>
+                    </div>
+                    <div class="warning">
+                        <span>
+                            Your email address will not be published. Required fields are marked *
+
+                        </span>
+                    </div>
+                    <form action="" method="post">
+                        <label for="yourreiew"><span>Your review *</span></label><br>
+                        <input style="height: 200px;" type="text" name="yourreiew" required id=""><br>
+                        <label for="name"><span>Name *</span></label><br>
+                        <input style="height: 60px;" type="text" name="name" required id=""><br>
+                        <label for="name"><span>Email *</span></label><br>
+                        <input style="height: 60px;" type="email" name="mail" required id=""><br>
+                        <input type="checkbox" name="" id="checkbox"><br>
+                        <span>
+                            Save my name, email, and website in this browser for the next time I
+                            comment.
+                        </span><br>
+                        <button type="button"><span>SUBMIT</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="products">
+    <div class="container">
+        <div class="row">
+
+            @await Html.PartialAsync("_FLowerPartialView",related)
+
+        </div>
+    </div>
+</section>
+@section Scripts{ 
+    <script src="~/assets/js/orangeamarylls.js">
+    </script>
+                
+}

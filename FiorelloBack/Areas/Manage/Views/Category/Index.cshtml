@@ -1,0 +1,101 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <a asp-controller="Category" asp-action="Create" class="btn btn-success btn-icon-text">
+            <i class="mdi mdi-upload btn-icon-prepend"></i>
+            Create
+        </a>
+        <table class="table table-dark mt-3">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                       Category name
+                    </th>
+                    <th>
+                       Flower count
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Category category in Model)
+                {
+                <tr>
+                    <td>
+                        @category.Id
+                    </td>
+                    <td>
+                        @category.Name
+                    </td>
+                    <td>
+                        @category.FlowerCategories.Count
+                    </td>
+                    <td>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-warning btn-icon-text">
+                            <i class="mdi mdi-file-check btn-icon-append"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger btn-icon-text delete-item">
+                            <i class="mdi mdi-alert btn-icon-prepend"></i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Script{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".delete-item").click(function (ev) {
+            ev.preventDefault()
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var link = $(this).attr("href")
+                    fetch(link).then(response => response.json().then(data => {
+                        if (data.status == 200) {
+                          
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            setTimeout(() => { location.reload(true) }, 2000);
+                            
+                           
+                          
+                        }
+                        else {
+                            Swal.fire(
+                                'NotFound!',
+                                'Your file cat not be found.',
+                                'filed'
+                            )
+                        }
+                    }))
+                  
+                }
+            })
+        })
+    </script>
+}

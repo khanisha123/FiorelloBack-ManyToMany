@@ -1,0 +1,92 @@
+﻿@model List<Flower>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <a asp-controller="Flower" asp-action="Create" class="btn btn-success btn-icon-text">
+            <i class="mdi mdi-upload btn-icon-prepend"></i>
+            Create
+        </a>
+        <table class="table table-dark mt-3">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Flower Image
+                    </th>
+                    <th>
+                        Flower name
+                    </th>
+                    <th>
+                        Flower Description
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Settings
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Flower flower in Model)
+                {
+                <tr>
+                    <td>
+                        @flower.Id
+                    </td>
+                    @if (@flower.FlowerImages.FirstOrDefault(x => x.IsMain == true).Image.Contains("https://"))
+                    {
+                        <td>
+                            <img src="@flower.FlowerImages.FirstOrDefault(x=>x.IsMain==true).Image" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <img src="~/assets/images/@flower.FlowerImages.FirstOrDefault(x=>x.IsMain==true).Image" />
+                        </td>
+                    }
+                    <td>
+                        @flower.Name
+                    </td>
+                    @if (flower.Description.Length > 25)
+                    {
+                        <td>
+                            @flower.Description.Substring(0, 25)...
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td>
+                            @flower.Description
+                        </td>
+                    }
+
+                    <td>
+                        @flower.Price
+                    </td>
+
+                    <td>
+                        <a asp-controller="Flower" asp-action="Edit" asp-route-id="@flower.Id" class="btn btn-warning btn-icon-text">
+                            <i class="mdi mdi-file-check btn-icon-append"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="Flower" asp-action="Delete" asp-route-id="@flower.Id" class="btn btn-danger btn-icon-text delete-item">
+                            <i class="mdi mdi-alert btn-icon-prepend"></i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

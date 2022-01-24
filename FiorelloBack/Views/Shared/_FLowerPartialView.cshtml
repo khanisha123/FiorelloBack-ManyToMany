@@ -1,0 +1,54 @@
+﻿@model List<Flower>
+
+@foreach (var flower in Model)
+{
+    <div data-aos-offset="100"
+         class="product col-lg-3 col-md-6
+                     @foreach (var flowerCategory in flower.FlowerCategories)
+                     {
+                         @(flowerCategory.Category.Name.ToLower()+" ")
+                     }
+                     all">
+        <div class="productImage">
+            @foreach (var image in flower.FlowerImages)
+            {
+                if (image.IsMain && image.Image.Contains("https://"))
+                {
+                    <a asp-controller="Flower" asp-action="Details" asp-route-id="@flower.Id" asp-route-categoryId="@flower.FlowerCategories.FirstOrDefault().CategoryId">
+                        <img src="@image.Image" alt="">
+                    </a>
+                }
+                if (image.IsMain)
+                {
+                    <a asp-controller="Flower" asp-action="Details" asp-route-id="@flower.Id" asp-route-categoryId="@flower.FlowerCategories.FirstOrDefault().CategoryId">
+                        <img src="~/assets/images/@image.Image" alt="">
+                    </a>
+                }
+
+            }
+
+
+        </div>
+        <div class="productTitle">
+            <p>@flower.Name</p>
+        </div>
+        <div class="productPrice">
+            @if (flower.CampaignId == null)
+            {
+                <span class="addToCardBtn" data-id="@flower.Id">Add to cart</span><span>$</span><span>@flower.Price</span>
+            }
+            else
+            {
+                <span class="addToCardBtn" data-id="5">Add to cart</span> <span style="text-decoration: line-through;">@flower.Price</span>
+                <span>$</span><span>@(flower.Price*(100-flower.Campaign.Dicount)/100)</span>
+            }
+
+        </div>
+        <div class="addToCart">
+
+        </div>
+
+    </div>
+}
+
+
